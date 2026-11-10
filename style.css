@@ -1,11 +1,13 @@
+/* Couleurs tirées du logo : bleu marine #003673, bleu #00428c, gris #8b8d96 */
 :root {
-  --papier: #efeae0;
-  --carte: #fffdf8;
-  --encre: #1e2a26;
-  --doux: #5d6a64;
-  --vert: #1f4d3f;
-  --vert-fonce: #16382e;
-  --filet: #e0d9ca;
+  --fond: #eef1f6;
+  --carte: #ffffff;
+  --encre: #1c2433;
+  --doux: #5f6573;
+  --marine: #003673;
+  --bleu: #00428c;
+  --gris: #8b8d96;
+  --filet: #dfe3ea;
   --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
   --sans: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
 }
@@ -18,7 +20,7 @@ body {
   display: grid;
   place-items: center;
   padding: clamp(1rem, 4vw, 3rem);
-  background: var(--papier);
+  background: var(--fond);
   color: var(--encre);
   font: 400 1rem/1.5 var(--sans);
 }
@@ -26,66 +28,39 @@ body {
 a { color: inherit; }
 
 a:focus-visible {
-  outline: 2px solid var(--vert);
+  outline: 2px solid var(--bleu);
   outline-offset: 3px;
   border-radius: 4px;
 }
 
 .carte {
   width: 100%;
-  max-width: 36rem;
+  max-width: 38rem;
   padding: clamp(1.75rem, 6vw, 3.25rem);
   background: var(--carte);
-  border-top: 6px solid var(--vert);
+  border-top: 6px solid var(--marine);
   border-radius: 4px;
-  box-shadow: 0 1px 2px rgb(30 42 38 / .08), 0 18px 40px -22px rgb(30 42 38 / .35);
+  box-shadow: 0 1px 2px rgb(0 54 115 / .08), 0 18px 40px -22px rgb(0 54 115 / .35);
 }
 
-h1 {
-  font: 400 clamp(2.25rem, 8vw, 3.25rem)/1.05 var(--serif);
-  letter-spacing: -.01em;
-  color: var(--vert);
+/* Logo */
+.logo { margin: 0 auto; max-width: 20rem; }
+
+.logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  mix-blend-mode: multiply; /* fond blanc du PNG fondu dans la carte */
 }
 
 .titre {
-  margin-top: .5rem;
+  margin-top: 1rem;
+  text-align: center;
   font-size: .8rem;
   font-weight: 600;
   letter-spacing: .12em;
   text-transform: uppercase;
-  color: var(--doux);
-}
-
-.intro {
-  margin-top: 1.25rem;
-  color: var(--doux);
-}
-
-/* Coordonnées */
-.contact {
-  margin-top: 2rem;
-  border-top: 1px solid var(--filet);
-}
-
-.contact a {
-  display: flex;
-  align-items: center;
-  gap: .9rem;
-  padding: .95rem .25rem;
-  border-bottom: 1px solid var(--filet);
-  text-decoration: none;
-  overflow-wrap: anywhere;
-  font: 400 clamp(1.15rem, 4.5vw, 1.4rem)/1.25 var(--serif);
-  transition: color .15s;
-}
-
-.contact a:hover { color: var(--vert); }
-
-.contact svg {
-  flex: none;
-  width: 1.2rem;
-  height: 1.2rem;
-  color: var(--vert);
+  color: var(--gris);
 }
 
 /* Portail */
@@ -94,60 +69,118 @@ h1 {
   align-items: center;
   justify-content: center;
   gap: .6rem;
-  margin-top: 1.5rem;
+  margin-top: 2rem;
   padding: .95rem 1.25rem;
-  background: var(--vert);
-  color: var(--carte);
+  background: var(--bleu);
+  color: #fff;
   border-radius: 4px;
   font-weight: 600;
   text-decoration: none;
   transition: background .15s;
 }
 
-.portail:hover { background: var(--vert-fonce); }
+.portail:hover { background: var(--marine); }
 
 .portail svg { width: 1.05rem; height: 1.05rem; }
 
-/* Associées */
+/* Sections */
+section { margin-top: 2.25rem; }
+
+h2 {
+  padding-bottom: .5rem;
+  border-bottom: 1px solid var(--filet);
+  font: 400 1.5rem/1.2 var(--serif);
+  color: var(--marine);
+}
+
+/* Services */
+.services {
+  margin-top: 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.services li {
+  position: relative;
+  padding: .35rem 0 .35rem 1.25rem;
+}
+
+.services li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .95rem;
+  width: .5rem;
+  height: 2px;
+  background: var(--gris);
+}
+
+/* Nous joindre */
+.courriel-general {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  margin-top: 1rem;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  font: 400 clamp(1.1rem, 4.2vw, 1.3rem)/1.25 var(--serif);
+  color: var(--marine);
+}
+
+.courriel-general:hover { color: var(--bleu); text-decoration: underline; }
+
+.courriel-general svg {
+  flex: none;
+  width: 1.2rem;
+  height: 1.2rem;
+  color: var(--gris);
+}
+
 .associees {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.25rem;
-  margin-top: 2.25rem;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
   padding: 0;
   list-style: none;
 }
 
 .associees li {
-  display: flex;
-  align-items: center;
-  gap: .8rem;
   min-width: 0;
+  padding-left: .9rem;
+  border-left: 3px solid var(--gris);
 }
 
-.photo {
-  flex: none;
-  display: grid;
-  place-items: center;
-  width: 4rem;
-  height: 4rem;
-  border-radius: 50%;
-  object-fit: cover;
-  background: var(--papier);
-  color: var(--vert);
-  font: 400 1.2rem/1 var(--serif);
+.nom {
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--marine);
 }
 
-.nom { font-weight: 600; line-height: 1.3; }
+.role {
+  margin-bottom: .4rem;
+  font-size: .85rem;
+  color: var(--doux);
+}
 
-.role { font-size: .85rem; color: var(--doux); }
+.associees a {
+  display: block;
+  font-size: .9rem;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.associees a:hover { color: var(--bleu); text-decoration: underline; }
 
 footer {
-  margin-top: 2rem;
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--filet);
+  text-align: center;
   font-size: .8rem;
   color: var(--doux);
 }
 
-@media (max-width: 26rem) {
+@media (max-width: 38rem) {
   .associees { grid-template-columns: 1fr; }
 }
