@@ -183,4 +183,14 @@ footer {
 
 @media (max-width: 38rem) {
   .associees { grid-template-columns: 1fr; }
+
+  /* Petit écran : la carte occupe tout l'écran, sans marge autour */
+  body { padding: 0; place-items: stretch; }
+
+  .carte {
+    min-height: 100vh;
+    min-height: 100dvh;
+    border-radius: 0;
+    box-shadow: none;
+  }
 }
