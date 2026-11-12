@@ -96,8 +96,7 @@ h2 {
 }
 
 .services li {
-  padding: .9rem 0 .9rem 1rem;
-  border-left: 3px solid var(--gris);
+  padding: .9rem 0;
 }
 
 .services li + li { margin-top: .75rem; }
@@ -147,8 +146,6 @@ h2 {
 
 .associees li {
   min-width: 0;
-  padding-left: .9rem;
-  border-left: 3px solid var(--gris);
 }
 
 .nom {
