@@ -4,6 +4,7 @@
   --encre: #1c2433;
   --doux: #5f6573;
   --marine: #253e5b;
+  --marine-clair: #38587e;
   --bleu: #00428c;
   --gris: #8b8d96;
   --filet: #dfe3ea;
@@ -15,6 +16,9 @@
 }
 
 * { box-sizing: border-box; margin: 0; }
+
+/* évite le défilement horizontal causé par la bande pleine largeur (100vw inclut la barre de défilement) */
+html { overflow-x: hidden; }
 
 body {
   min-height: 100vh;
@@ -94,11 +98,22 @@ h2 {
 /* Services : bande foncée pleine largeur */
 .bande-services {
   padding: 2.25rem 0 2.5rem;
+  position: relative;
+  isolation: isolate; /* garde le fond ::before derrière le contenu */
   color: var(--texte-fonce);
-  /* fond marine étendu jusqu'aux bords de l'écran, sans débordement horizontal */
-  border-image-source: linear-gradient(#38587e, var(--marine));
-  border-image-slice: 0 fill;
-  border-image-outset: 0 100vmax;
+}
+
+/* fond en dégradé étendu jusqu'aux bords de l'écran */
+.bande-services::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background: linear-gradient(var(--marine-clair), var(--marine));
 }
 
 .bande-services h2 {
